@@ -24,7 +24,7 @@ The pipeline consists of the following key components:
 │   ├── process_econ_indicators_data.py    # Glue Job for processing raw economic indicators data
 │   ├── process_stock_data.py              # Glue Job for processing raw stock data
 │   ├── process_top_gainers_data.py        # Glue Job for processing raw top gainers data
-├── README.md                     # Project documentation
+├── README.md                              # Project documentation
 ```
 
 ## Setup & Deployment
