@@ -6,8 +6,12 @@ from alpha_vantage.timeseries import TimeSeries
 from alpha_vantage.econindicators import EconIndicators
 from alpha_vantage.alphaintelligence import AlphaIntelligence
 from alpha_vantage.commodities import Commodities
+from alpha_vantage.cryptocurrencies import CryptoCurrencies
+
+API_KEY = 'BTAXTABC946FQAC0'
 
 stocks = ['AAPL', 'MSFT', 'TSLA', 'NVDA', 'AMZN', 'GOOGL', 'META', 'BRK.B', 'JPM', 'V']
+cryptos = ["BTC", "ETH", "USDT", "XRP", "ADA", "SOL", "DOGE", "DOT", "LTC", "BCH"]
 
 # Bucket datails
 S3_BUCKET = "market-mind-project"
@@ -16,6 +20,7 @@ S3_FOLDER_STOCK = f"{S3_FOLDER_RAW}/stocks"
 S3_FOLDER_COMM = f"{S3_FOLDER_RAW}/commodities"
 S3_FOLDER_ECON = f"{S3_FOLDER_RAW}/economic_indicators"
 S3_FOLDER_TOP = f"{S3_FOLDER_RAW}/top_gainers"
+S3_FOLDER_CRYPTO = f"{S3_FOLDER_RAW}/crypto"
 
 s3 = boto3.client('s3')
 
@@ -116,9 +121,23 @@ def getTopGainers():
     S3_KEY = f"{S3_FOLDER_TOP}/{file_name}"
     save_df_to_s3(market_movers_df, S3_BUCKET, S3_KEY)
     
+def getCryptoData():
+    cc = CryptoCurrencies(key=API_KEY, output_format='pandas')
+
+    for s in cryptos:
+        data, meta_data = cc.get_digital_currency_daily(symbol=s, market='USD')
+        data.reset_index(inplace=True)
+        data.columns = ["date", "open", "high", "low", "close", "volume"]
+        
+        # Save to S3
+        file_name = s + '.csv'
+        S3_KEY = f"{S3_FOLDER_CRYPTO}/{file_name}"
+        save_df_to_s3(data, S3_BUCKET, S3_KEY)
+
 def lambda_handler(event, context):
+    getCryptoData()
     getStockData()
-    getCommodities()
+    #getCommodities()
     getEconIndicators()
     getTopGainers()
     
