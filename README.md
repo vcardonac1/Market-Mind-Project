@@ -20,10 +20,10 @@ The pipeline consists of the following key components:
 ├── 📂 lambda_function                     # AWS Lambda function code
 │   ├── lambda_function.py                 # Fetches stock data from Alpha Vantage
 ├── 📂 glue_jobs                           # AWS Glue ETL Jobs
-│   ├── process_commodities_data.py        # Glue Job for processing raw commodities data
 │   ├── process_econ_indicators_data.py    # Glue Job for processing raw economic indicators data
 │   ├── process_stock_data.py              # Glue Job for processing raw stock data
 │   ├── process_top_gainers_data.py        # Glue Job for processing raw top gainers data
+│   ├── process_crypto_data.py             # Glue Job for processing raw crypto data
 ├── README.md                              # Project documentation
 ```
 
