@@ -135,11 +135,13 @@ def getCryptoData():
         save_df_to_s3(data, S3_BUCKET, S3_KEY)
 
 def lambda_handler(event, context):
-    getCryptoData()
-    getStockData()
-    #getCommodities()
-    getEconIndicators()
-    getTopGainers()
+    today = datetime.datetime.utcnow().day    
+    if today == 2:
+        getEconIndicators() # monthly
+
+    getCryptoData() # daily
+    getStockData() # daily
+    getTopGainers() # daily
     
     return {
         "statusCode": 200,
