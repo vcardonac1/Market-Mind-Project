@@ -3,6 +3,8 @@
 ## Overview
 The **Market Mind Project** is an end-to-end data pipeline that extracts financial market data from the **Alpha Vantage API**, processes it using **AWS Lambda and AWS Glue**, and stores it in **Amazon S3** for further analysis. This pipeline enables efficient data collection, transformation, and storage for financial insights.
 
+The goal of this project is to develop a real-time interactive dashboard that allows users to analyze financial market trends dynamically. This will be achieved using an **EC2** instance to host the application and **Streamlit** to create an intuitive and interactive interface.
+
 ## Architecture
 The pipeline consists of the following key components:
 
