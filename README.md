@@ -1,9 +1,14 @@
 # Market Mind Project
 
-## Overview
-The **Market Mind Project** is an end-to-end data pipeline that extracts financial market data from the **Alpha Vantage API**, processes it using **AWS Lambda and AWS Glue**, and stores it in **Amazon S3** for further analysis. This pipeline enables efficient data collection, transformation, and storage for financial insights.
+## Overview  
+The Market Mind Project is an end-to-end data pipeline designed to extract, process, store, and visualize financial market data. It fetches data from the Alpha Vantage API, processes it using AWS Lambda and AWS Glue, and stores it in Amazon S3. The processed data is then used to power a real-time interactive dashboard, hosted on an EC2 instance and built with Streamlit, enabling users to dynamically analyze financial market trends.
 
-The goal of this project is to develop a real-time interactive dashboard that allows users to analyze financial market trends dynamically. This will be achieved using an **EC2** instance to host the application and **Streamlit** to create an intuitive and interactive interface.
+## Technologies Used  
+- **AWS Lambda** – Fetches financial data from the Alpha Vantage API.
+- **AWS Glue** – Cleans and transforms raw data.
+- **Amazon S3** – Stores both raw and processed data.
+- **EC2** – Hosts the interactive dashboard.
+- **Streamlit** – Provides a real-time data visualization interface.
 
 ## Architecture
 The pipeline consists of the following key components:
@@ -26,8 +31,16 @@ The pipeline consists of the following key components:
 │   ├── process_stock_data.py              # Glue Job for processing raw stock data
 │   ├── process_top_gainers_data.py        # Glue Job for processing raw top gainers data
 │   ├── process_crypto_data.py             # Glue Job for processing raw crypto data
+├── 📂 dashboard                           
+│   ├── app.py                             # Streamlit code for the dashboard
 ├── README.md                              # Project documentation
 ```
+
+## How It Works  
+1. **Data Extraction**: AWS Lambda periodically fetches stock, crypto currency, and economic indicator data from the Alpha Vantage API and saves it to S3.
+2. **Data Transformation**: AWS Glue ETL jobs process and clean the data, consolidating it into structured tables.
+3. **Storage**: The processed data is stored in Amazon S3 in Parquet format for optimized querying.
+4. **Visualization**: An EC2-hosted Streamlit application loads and visualizes the data, allowing users to explore market trends in real time.
 
 ## Setup & Deployment
 ### 1. AWS Lambda Function
