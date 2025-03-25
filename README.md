@@ -10,6 +10,12 @@ The Market Mind Project is an end-to-end data pipeline designed to extract, proc
 - **EC2** – Hosts the interactive dashboard.
 - **Streamlit** – Provides a real-time data visualization interface.
 
+## How It Works  
+1. **Data Extraction**: AWS Lambda periodically fetches stock, crypto currency, and economic indicator data from the Alpha Vantage API and saves it to S3.
+2. **Data Transformation**: AWS Glue ETL jobs process and clean the data, consolidating it into structured tables.
+3. **Storage**: The processed data is stored in Amazon S3 in Parquet format for optimized querying.
+4. **Visualization**: An EC2-hosted Streamlit application loads and visualizes the data, allowing users to explore market trends in real time.
+
 ## Architecture
 The pipeline consists of the following key components:
 
@@ -35,12 +41,6 @@ The pipeline consists of the following key components:
 │   ├── app.py                             # Streamlit code for the dashboard
 ├── README.md                              # Project documentation
 ```
-
-## How It Works  
-1. **Data Extraction**: AWS Lambda periodically fetches stock, crypto currency, and economic indicator data from the Alpha Vantage API and saves it to S3.
-2. **Data Transformation**: AWS Glue ETL jobs process and clean the data, consolidating it into structured tables.
-3. **Storage**: The processed data is stored in Amazon S3 in Parquet format for optimized querying.
-4. **Visualization**: An EC2-hosted Streamlit application loads and visualizes the data, allowing users to explore market trends in real time.
 
 ## Setup & Deployment
 ### 1. AWS Lambda Function
