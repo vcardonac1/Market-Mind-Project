@@ -48,9 +48,8 @@ df = df.withColumn("file_path", input_file_name())
 # Assign indicator names based on file paths
 df = df.withColumn(
     "indicator",
-    when(df["file_path"].contains("inflation"), "Inflation")
-    .when(df["file_path"].contains("gdp.csv"), "Real GDP") 
-    .when(df["file_path"].contains("capita"), "Real GDP per Capita")
+    when(df["file_path"].contains("treasury"), "Treasury Yield")
+    .when(df["file_path"].contains("federal"), "Federal Funds Rate")
     .when(df["file_path"].contains("cpi"), "CPI")
     .otherwise("Unknown")  # Default value for unmatched cases
 )
