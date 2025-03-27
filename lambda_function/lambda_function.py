@@ -7,6 +7,7 @@ from alpha_vantage.econindicators import EconIndicators
 from alpha_vantage.alphaintelligence import AlphaIntelligence
 from alpha_vantage.commodities import Commodities
 from alpha_vantage.cryptocurrencies import CryptoCurrencies
+import datetime
 
 API_KEY = 'BTAXTABC946FQAC0'
 
