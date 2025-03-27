@@ -90,16 +90,14 @@ def getCommodities():
 def getEconIndicators():
     econ = EconIndicators(key=API_KEY, output_format='pandas')
 
-    real_gdp_data, meta_data = econ.get_real_gdp() #year
-    inflation_data, meta_data = econ.get_inflation() #year
-    cpi_data, meta_data = econ.get_cpi() #month
-    real_gdp_per_capita_data, meta_data = econ.get_real_gdp_per_capita() #quarterly
+    cpi_data, meta_data = econ.get_cpi()
+    federal_data, meta_data = econ.get_ffr()
+    treasury_data, meta_data = econ.get_treasury_yield()
 
     econIndicatorsArray = {
-        "real_gdp": real_gdp_data,
-        "inflation": inflation_data,
+        "treasury": treasury_data,
+        "federal": federal_data,
         "cpi": cpi_data,
-        "real_gdp_per_capita": real_gdp_per_capita_data
     }
     
     for name, df in econIndicatorsArray.items():
