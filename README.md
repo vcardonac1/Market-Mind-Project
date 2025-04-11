@@ -36,9 +36,11 @@ The pipeline consists of the following key components:
 │   ├── process_econ_indicators_data.py    # Glue Job for processing raw economic indicators data
 │   ├── process_stock_data.py              # Glue Job for processing raw stock data
 │   ├── process_top_gainers_data.py        # Glue Job for processing raw top gainers data
-│   ├── process_crypto_data.py             # Glue Job for processing raw crypto data
-├── 📂 dashboard                           
-│   ├── app.py                             # Streamlit code for the dashboard
+│   ├── process_crypto_data.py             # Glue Job for processing raw crypto data                          
+├── 608-dashboard.py                       # Streamlit code for the dashboard
+├── requirements.txt                       # Required libraries to execute the Streamlit code
+├── runtime.txt                            # Runtime for the Streamlit Dashboard
+├── background.png                         # Background image for the dashboard
 ├── README.md                              # Project documentation
 ```
 
@@ -58,3 +60,13 @@ The pipeline consists of the following key components:
 3. Set the input S3 path (`s3://market-mind-project/raw_data/stocks/`).
 4. Set the output S3 path (`s3://market-mind-project/processed_data/stocks/`).
 5. Run the Glue job manually or schedule it.
+
+### 3. Dashboard
+You can easily deploy this Streamlit dashboard using [Streamlit Community Cloud](https://streamlit.io/cloud). Follow these steps:
+
+1. Fork or clone this repository.
+2. Go to [streamlit.io/cloud](https://streamlit.io/cloud) and sign in with your GitHub account.
+3. Click on **"New app"**.
+4. In the **Repository** dropdown, select your forked repo.
+5. In the **File path** field, enter: "608-dashboard.py".
+6. Click **"Deploy"**.
