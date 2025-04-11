@@ -27,6 +27,10 @@ The pipeline consists of the following key components:
    - **Raw Data Processing:** Reads multiple stock CSV files from S3, adds the stock name as an additional column, and merges them into a single dataset.
    - **Processed Data Storage:** Saves the transformed data back to **S3 (`market-mind-project/processed_data/stocks`)** in **Parquet format** for optimized querying and storage.
 
+3. **Streamlit App:**
+   - Loads and visualizes the processed *stock/crypto/economic indicators/top gainers* data stored in **Parquet format** from S3.
+   - Provides interactive charts and metrics for exploring *stock/crypto/economic indicators/top gainers* performance over time.
+
 ## Folder Structure
 ```
 📂 Market-Mind-Project
